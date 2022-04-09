@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import "./topbar.css";
 
 import { Context } from "../../context/Context";
+import { prefixImgURI } from "../../config";
 
 const Topbar = () => {
     const { user, dispatch } = useContext(Context);
-    const PF = "https://xuantam-mern-blog.herokuapp.com/images/";
 
     const handleLogout = (e) => {
         dispatch({ type: "LOGOUT" });
@@ -54,7 +54,7 @@ const Topbar = () => {
                     <Link className="link" to="/settings">
                         <img
                             className="topImg"
-                            src={PF + user.profilePic}
+                            src={prefixImgURI + user.profilePic}
                             alt=""
                         />
                     </Link>

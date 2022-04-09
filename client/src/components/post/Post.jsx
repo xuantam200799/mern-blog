@@ -3,13 +3,18 @@ import "./post.css";
 import { Link } from "react-router-dom";
 import { format } from "timeago.js";
 
+import { prefixImgURI } from "../../config";
+
 const Post = ({ post }) => {
-    const PF = "https://xuantam-mern-blog.herokuapp.com/images/";
     return (
         <div className="post">
             {post.photo && (
                 <Link to={`/post/${post._id}`} className="link">
-                    <img className="postImg" src={PF + post.photo} alt="" />
+                    <img
+                        className="postImg"
+                        src={prefixImgURI + post.photo}
+                        alt=""
+                    />
                 </Link>
             )}
             <div className="postInfo">

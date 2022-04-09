@@ -6,9 +6,9 @@ import { format } from "timeago.js";
 import "./singlePost.css";
 import { axiosInstance } from "../../config";
 import { Context } from "../../context/Context";
+import { prefixImgURI } from "../../config";
 
 const SinglePost = () => {
-    const PF = "https://xuantam-mern-blog.herokuapp.com/images/";
     const location = useLocation();
     const path = location.pathname.split("/")[2];
     const { user } = useContext(Context);
@@ -75,7 +75,7 @@ const SinglePost = () => {
             <div className="singlePostWrapper">
                 {post.photo && (
                     <img
-                        src={PF + post.photo}
+                        src={prefixImgURI + post.photo}
                         alt=""
                         className="singlePostImg"
                     />

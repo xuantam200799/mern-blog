@@ -8,6 +8,7 @@ import * as Yup from "yup";
 import FormikControl from "../../components/formik/FormikControl";
 import Sidebar from "../../components/sidebar/Sidebar";
 import { Context } from "../../context/Context";
+import { prefixImgURI } from "../../config";
 
 const Settings = () => {
     const initialValues = {
@@ -24,7 +25,6 @@ const Settings = () => {
     const [success, setSuccess] = useState(false);
 
     const { user, dispatch } = useContext(Context);
-    const PF = "https://xuantam-mern-blog.herokuapp.com/images/";
 
     const handleSubmit = async (values) => {
         dispatch({ type: "UPDATE_START" });
@@ -87,7 +87,7 @@ const Settings = () => {
                                         src={
                                             file
                                                 ? URL.createObjectURL(file)
-                                                : PF + user.profilePic
+                                                : prefixImgURI + user.profilePic
                                         }
                                         alt=""
                                     />

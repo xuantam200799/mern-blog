@@ -12,11 +12,16 @@ const Register = () => {
         username: "",
         email: "",
         password: "",
+        passwordConfirmation: "",
     };
     const validationSchema = Yup.object({
         username: Yup.string().required("Required"),
         email: Yup.string().email("Invalid email format").required("Required"),
         password: Yup.string().required("Required"),
+        passwordConfirmation: Yup.string().oneOf(
+            [Yup.ref("password"), null],
+            "Passwords must match"
+        ),
     });
     const [error, setError] = useState(false);
 
@@ -67,6 +72,14 @@ const Register = () => {
                                 label="Password"
                                 name="password"
                                 placeholder="Enter your password..."
+                                className="registerInput"
+                            />
+                            <FormikControl
+                                control="input"
+                                type="password"
+                                label="Confirm password"
+                                name="passwordConfirmation"
+                                placeholder="Confirm password..."
                                 className="registerInput"
                             />
                             <button
