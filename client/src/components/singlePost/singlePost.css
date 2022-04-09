@@ -1,0 +1,148 @@
+.singlePost {
+    flex: 9;
+}
+.singlePostWrapper {
+    padding: 20px;
+    padding-right: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.singlePostImg {
+    width: 100%;
+    height: 300px;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.singlePostTitle {
+    text-align: center;
+    margin: 10px;
+    font-family: "Lora", serif;
+    font-size: 28px;
+}
+.singlePostTitleWrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.singlePostTitleFileWrapper {
+}
+
+.singlePostTitleInput {
+    flex: 1;
+    margin: 10px;
+    font-family: "Lora", serif;
+    font-size: 28px;
+    text-align: center;
+    border: none;
+    color: gray;
+    border-bottom: 1px solid lightgray;
+}
+
+.singlePostTitleInput:focus {
+    outline: none;
+}
+
+.singlePostCatsInput {
+    flex: 1;
+    margin: 10px;
+    font-family: "Lora", serif;
+    font-size: 16px;
+    text-align: left;
+    border: none;
+    color: gray;
+    border-bottom: 1px solid lightgray;
+}
+
+.singlePostCatsInput:focus {
+    outline: none;
+}
+
+.singlePostEdit {
+    float: right;
+    font-size: 16px;
+}
+
+.singlePostIcon {
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.singlePostIcon:first-child {
+    color: teal;
+}
+
+.singlePostIcon:last-child {
+    color: tomato;
+}
+
+.singlePostInfo {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    color: #b39656;
+    font-family: "Varela Round", Arial, Helvetica, sans-serif;
+}
+
+.singlePostAuthor {
+}
+
+.singlePostDate {
+}
+
+.singlePostDesc {
+    color: #666;
+    font-size: 18px;
+    line-height: 25px;
+}
+
+.singlePostDesc::first-letter {
+    margin-left: 20px;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.singlePostDescInput {
+    border: none;
+    color: #666;
+    font-size: 18px;
+    line-height: 25px;
+    background-color: rgb(237, 235, 235);
+}
+
+.singlePostDescInput:focus {
+    outline: none;
+}
+.singlePostButton {
+    width: 100px;
+    border: none;
+    background-color: teal;
+    padding: 5px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    align-self: flex-end;
+    margin-top: 20px;
+    margin-left: 10px;
+}
+
+.singlePostCats {
+    list-style: none;
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+}
+
+.singlePostCatsItem {
+    padding: 2px 8px;
+    border-radius: 5px;
+    margin-right: 10px;
+    background-color: #ccc;
+}
+.singlePostButtonContainer {
+    display: flex;
+    justify-content: flex-end;
+}

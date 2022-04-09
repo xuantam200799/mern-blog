@@ -1,0 +1,129 @@
+.write {
+    padding-top: 50px;
+}
+
+.writeImg {
+    margin-left: 150px;
+    width: 70vw;
+    height: 250px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.writeForm {
+    position: relative;
+}
+
+.writeFormGroup {
+    margin-left: 150px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.writeInput {
+    font-size: 30px;
+    border: none;
+    padding: 20px;
+    width: 70vw;
+}
+
+.writeInput:focus {
+    outline: none;
+}
+
+.writeInput::placeholder {
+    color: rgb(189, 185, 185);
+    font-weight: 400;
+}
+
+.writeIcon {
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    border: 1px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 20px;
+    color: rgb(129, 125, 125);
+}
+
+.writeText {
+    width: 70vw;
+    height: 100vh;
+    font-family: inherit;
+    font-size: 20px;
+}
+
+.writeSubmit {
+    position: absolute;
+    top: 20px;
+    right: 50px;
+    color: white;
+    background-color: teal;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.writeCheckbox {
+    margin: 0 20px 10px 0;
+}
+
+/* Basic styles */
+input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+}
+.checkbox-label {
+    position: relative;
+    display: inline-block;
+    padding: 0 0 0 26px;
+    cursor: pointer;
+    color: rgb(189, 185, 185);
+}
+.checkbox-label::before,
+.checkbox-label::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 15px;
+    height: 15px;
+}
+.checkbox-label::before {
+    content: " ";
+    border: 2px solid #bdc3c7;
+    border-radius: 20%;
+}
+/* Checkbox */
+input[type="checkbox"] + .checkbox-label::after {
+    content: "\2714";
+    color: rgb(189, 185, 185);
+    text-align: center;
+    padding-left: 2px;
+}
+
+/* :checked */
+input[type="checkbox"]:checked + .checkbox-label::before {
+    background: #fff;
+    border-color: rgb(189, 185, 185);
+}
+input[type="checkbox"] + .checkbox-label::after {
+    transform: scale(0);
+}
+input[type="checkbox"]:checked + .checkbox-label::after {
+    transform: scale(0.8);
+}
+/* Transition */
+.checkbox-label::before,
+.checkbox-label::after {
+    transition: 0.25s all ease;
+}
