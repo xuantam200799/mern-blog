@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import "./login.css";
 import { Formik, Form } from "formik";
@@ -19,17 +19,21 @@ const Login = () => {
     });
 
     const { dispatch } = useContext(Context);
+    const [error, setError] = useState({});
 
     const handleSubmit = async (values) => {
+        setError({});
         dispatch({ type: "LOGIN_START" });
         try {
             const res = await axiosInstance.post("/auth/login", {
                 username: values.username,
                 password: values.password,
             });
+
             dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
-        } catch (error) {
+        } catch (err) {
             dispatch({ type: "LOGIN_FAILURE" });
+            setError(err.response);
         }
     };
 
@@ -76,6 +80,16 @@ const Login = () => {
                     Register
                 </Link>
             </button>
+            {error && (
+                <span
+                    style={{
+                        color: "red",
+                        marginTop: "8px",
+                    }}
+                >
+                    {error.data}
+                </span>
+            )}
         </div>
     );
 };

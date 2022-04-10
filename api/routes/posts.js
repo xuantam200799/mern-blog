@@ -6,15 +6,20 @@ const {
     updatePost,
     createPost,
 } = require("../controllers/postControllers");
+const {
+    verifyToken,
+    verifyTokenAndCheckUserId,
+    verifyTokenAndCheckUsername,
+} = require("../middlewares/verifyToken");
 
 // create new post
 router.post("/", createPost);
 
 // update post
-router.put("/:id", updatePost);
+router.put("/:id", verifyTokenAndCheckUsername, updatePost);
 
 // delete post
-router.delete("/:id", deletePost);
+router.delete("/:id", verifyTokenAndCheckUsername, deletePost);
 
 // get post
 router.get("/:id", getPost);

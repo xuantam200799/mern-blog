@@ -4,12 +4,17 @@ const {
     deleteUser,
     getUser,
 } = require("../controllers/userControllers");
+const {
+    verifyToken,
+    verifyTokenAndCheckUserId,
+    verifyTokenAndCheckUsername,
+} = require("../middlewares/verifyToken");
 
 // update
-router.put("/:id", updateUser);
+router.put("/:id", verifyTokenAndCheckUserId, updateUser);
 
 // delete
-router.delete("/:id", deleteUser);
+router.delete("/:id", verifyTokenAndCheckUserId, deleteUser);
 
 // get user
 router.get("/:id", getUser);

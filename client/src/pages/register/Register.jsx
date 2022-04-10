@@ -23,10 +23,10 @@ const Register = () => {
             "Passwords must match"
         ),
     });
-    const [error, setError] = useState(false);
+    const [error, setError] = useState({});
 
     const handleSubmit = async (values) => {
-        setError(false);
+        setError({});
         try {
             const res = await axiosInstance.post("/auth/register", {
                 username: values.username,
@@ -34,8 +34,9 @@ const Register = () => {
                 password: values.password,
             });
             res.data && window.location.replace("/login");
+            console.log(res);
         } catch (error) {
-            setError(true);
+            setError(error.response);
         }
     };
 
@@ -106,7 +107,7 @@ const Register = () => {
                         marginTop: "8px",
                     }}
                 >
-                    Something went wrong!
+                    {error.data}
                 </span>
             )}
         </div>
