@@ -3,7 +3,9 @@ import "./post.css";
 import { Link } from "react-router-dom";
 import { format } from "timeago.js";
 
-import { prefixImgURI } from "../../config";
+import Badge from "../badge/Badge";
+
+import { prefixImgURI } from "../../services/api";
 
 const Post = ({ post }) => {
     return (
@@ -20,9 +22,9 @@ const Post = ({ post }) => {
             <div className="postInfo">
                 <div className="postCats">
                     {post.categories.map((cat, i) => (
-                        <span className="postCat" key={i}>
-                            {cat.name}
-                        </span>
+                        <Link className="link" to={`/?cat=${cat}`} key={i}>
+                            <Badge>{cat}</Badge>
+                        </Link>
                     ))}
                 </div>
                 <Link to={`/post/${post._id}`} className="link">

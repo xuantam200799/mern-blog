@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./sidebar.css";
-import { axiosInstance } from "../../config";
+import { axiosInstance } from "../../services/api";
 import { Link } from "react-router-dom";
 
 const Sidebar = () => {

@@ -1,0 +1,30 @@
+.badge {
+    font-family: "Varela Round", Arial, Helvetica, sans-serif;
+    background-color: var(--badge-bg-color);
+    padding: 2px 5px;
+    border-radius: var(--border-radius);
+    font-size: 0.7rem;
+    color: var(--badge-txt-color);
+    line-height: 20px;
+    margin-top: 15px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.badge.badge-lg {
+    font-size: 1rem;
+    padding: 2px 8px;
+}
+
+.badge.badge-secondary {
+    color: var(--txt-primary-color);
+    background-color: var(--badge-second-bg-color);
+}
+
+.badge.badge-secondary:hover {
+    background-color: var(--badge-second-bg-color-hover);
+}
+
+.badge:hover {
+    background-color: var(--badge-bg-color-hover);
+}

@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+}
+
+:root {
+    --header-bg-color: rgba(223, 230, 233, 1);
+    --header-height: 50px;
+    --txt-black: black;
+    --txt-primary-color: rgba(99, 110, 114, 1);
+    --txt-secondary-color: rgba(149, 165, 166, 1);
+    --txt-third-color: rgba(241, 196, 15, 1);
+    --btn-primary-bg: rgba(192, 57, 43, 1);
+    --btn-primary-bg-hover: rgba(231, 76, 60, 1);
+    --btn-secondary-bg: rgba(41, 128, 185, 1);
+    --btn-secondary-bg-hover: rgba(52, 152, 219, 1);
+    --sidebar-bg: #fdfbfb;
+    --link-hover: rgba(192, 57, 43, 1);
+    --border-radius: 5px;
+    --badge-txt-color: rgba(253, 203, 110, 1);
+    --badge-bg-color: rgba(255, 234, 167, 0.5);
+    --badge-bg-color-hover: rgba(255, 234, 167, 1);
+    --badge-second-bg-color: rgba(223, 230, 233, 1);
+    --badge-second-bg-color-hover: rgba(178, 190, 195, 1);
+}
+
+ul {
+    padding: 0;
+}
+.link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.link.active {
+    color: red;
+}

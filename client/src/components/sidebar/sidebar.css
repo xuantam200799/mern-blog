@@ -3,7 +3,7 @@
     height: fit-content;
     margin: 20px;
     padding-bottom: 30px;
-    background-color: #fdfbfb;
+    background-color: var(--sidebar-bg);
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -43,6 +43,10 @@
 .sidebarList {
     list-style-type: none;
     margin-bottom: 30px;
+}
+
+.sidebarList > .link:hover {
+    color: var(--link-hover);
 }
 
 .sidebarListItem {

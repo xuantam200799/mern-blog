@@ -1,17 +1,19 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { format } from "timeago.js";
-
 import "./singlePost.css";
-import { axiosInstance } from "../../config";
-import { Context } from "../../context/Context";
-import { prefixImgURI } from "../../config";
+
+import Badge from "../badge/Badge";
+
+import { axiosInstance } from "../../services/api";
+import { prefixImgURI } from "../../services/api";
 
 const SinglePost = () => {
     const location = useLocation();
     const path = location.pathname.split("/")[2];
-    const { user } = useContext(Context);
+    const { user } = useSelector((state) => state.user);
 
     const [updateMode, setUpdateMode] = useState(false);
     const [post, setPost] = useState({});
@@ -148,9 +150,7 @@ const SinglePost = () => {
                                       key={i}
                                       className="link"
                                   >
-                                      <li className="singlePostCatsItem">
-                                          {cat}
-                                      </li>
+                                      <Badge color="secondary">{cat}</Badge>
                                   </Link>
                               ))}
                     </div>

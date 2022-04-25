@@ -1,8 +1,8 @@
 .top {
     width: 100%;
-    height: 50px;
-    background-color: white;
-    position: sticky;
+    height: var(--header-height);
+    background-color: var(--header-bg-color);
+    position: fixed;
     top: 0;
     display: flex;
     align-items: center;
@@ -51,6 +51,10 @@
     font-size: 18px;
     font-weight: 300;
     cursor: pointer;
+}
+
+.topListItem.active {
+    color: red;
 }
 
 .topListItem:hover {

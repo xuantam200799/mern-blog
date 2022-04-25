@@ -74,8 +74,16 @@
     color: teal;
 }
 
+.singlePostIcon:first-child:hover {
+    color: rgb(5, 179, 179);
+}
+
 .singlePostIcon:last-child {
     color: tomato;
+}
+
+.singlePostIcon:last-child:hover {
+    color: rgb(251, 129, 107);
 }
 
 .singlePostInfo {
@@ -94,7 +102,7 @@
 }
 
 .singlePostDesc {
-    color: #666;
+    color: var(--txt-secondary-color);
     font-size: 18px;
     line-height: 25px;
 }
@@ -136,12 +144,6 @@
     margin-bottom: 20px;
 }
 
-.singlePostCatsItem {
-    padding: 2px 8px;
-    border-radius: 5px;
-    margin-right: 10px;
-    background-color: #ccc;
-}
 .singlePostButtonContainer {
     display: flex;
     justify-content: flex-end;

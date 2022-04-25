@@ -1,12 +1,13 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./login.css";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 
 import FormikControl from "../../components/formik/FormikControl";
-import { axiosInstance } from "../../config";
-import { Context } from "../../context/Context";
+import AuthService from "../../services/auth.service";
+import { loginStart, loginSuccess, loginFailure } from "../../redux/userSlice";
+import { useDispatch } from "react-redux";
 
 const Login = () => {
     const initialValues = {
@@ -18,21 +19,21 @@ const Login = () => {
         password: Yup.string().required("Required"),
     });
 
-    const { dispatch } = useContext(Context);
+    const dispatch = useDispatch();
     const [error, setError] = useState({});
 
     const handleSubmit = async (values) => {
         setError({});
-        dispatch({ type: "LOGIN_START" });
+        dispatch(loginStart());
         try {
-            const res = await axiosInstance.post("/auth/login", {
-                username: values.username,
-                password: values.password,
-            });
+            const res = await AuthService.login(
+                values.username,
+                values.password
+            );
 
-            dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+            dispatch(loginSuccess(res.data));
         } catch (err) {
-            dispatch({ type: "LOGIN_FAILURE" });
+            dispatch(loginFailure());
             setError(err.response);
         }
     };
@@ -75,6 +76,17 @@ const Login = () => {
                     );
                 }}
             </Formik>
+            <p
+                style={{
+                    marginTop: "8px",
+                }}
+            >
+                If you don't have a account?{" "}
+                <Link to="/register" className="link" style={{ color: "teal" }}>
+                    register
+                </Link>{" "}
+                here!
+            </p>
             <button className="loginRegisterButton">
                 <Link className="link" to="/register">
                     Register

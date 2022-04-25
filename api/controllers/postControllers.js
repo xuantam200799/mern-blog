@@ -1,4 +1,5 @@
 const Post = require("../models/Post");
+const { updatePost: findByIdAndUpdatePost } = require("../methods/postMethods");
 
 const createPost = async (req, res, next) => {
     const newPost = new Post(req.body);
@@ -19,12 +20,16 @@ const updatePost = async (req, res, next) => {
 
         if (post.username === req.body.username) {
             try {
-                const updatedPost = await Post.findByIdAndUpdate(
+                // const updatedPost = await Post.findByIdAndUpdate(
+                //     req.params.id,
+                //     {
+                //         $set: req.body,
+                //     },
+                //     { new: true }
+                // );
+                const updatedPost = await findByIdAndUpdatePost(
                     req.params.id,
-                    {
-                        $set: req.body,
-                    },
-                    { new: true }
+                    req.body
                 );
                 res.status(200).json(updatedPost);
             } catch (err) {}

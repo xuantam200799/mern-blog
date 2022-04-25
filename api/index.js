@@ -2,18 +2,21 @@ const express = require("express");
 const app = express();
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
+const multer = require("multer");
+const path = require("path");
+const cors = require("cors");
+const morgan = require("morgan");
+
 const authRoute = require("./routes/auth");
 const usersRoute = require("./routes/users");
 const postRoute = require("./routes/posts");
 const categoryRoute = require("./routes/categories");
-const multer = require("multer");
-const path = require("path");
-const cors = require("cors");
 
 const uri = process.env.MONGO_URL;
 
 dotenv.config();
 
+app.use(morgan("dev"));
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -44,9 +47,6 @@ app.post("/api/upload", upload.single("file"), (req, res) => {
 });
 
 // routes
-// app.use("/api", function (req, res) {
-//     res.header("Access-Control-Allow-Origin", "*");
-// });
 app.use("/api/auth", authRoute);
 app.use("/api/users", usersRoute);
 app.use("/api/posts", postRoute);

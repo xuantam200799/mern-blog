@@ -16,14 +16,12 @@
     align-items: center;
 }
 
-.postCat {
-    font-family: "Varela Round", Arial, Helvetica, sans-serif;
-    font-size: 11px;
-    color: #be9656;
-    line-height: 20px;
-    margin-top: 15px;
-    margin-right: 10px;
-    cursor: pointer;
+.postInfo > .link:hover {
+    color: var(--link-hover);
+}
+
+.postCats {
+    margin: 5px 0;
 }
 
 .postTitle {
@@ -55,4 +53,4 @@
     display: -webkit-box;
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
-  }
+}

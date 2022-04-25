@@ -1,16 +1,23 @@
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import "./topbar.css";
 
-import { Context } from "../../context/Context";
-import { prefixImgURI } from "../../config";
+import { prefixImgURI } from "../../services/api";
+import { logout } from "../../redux/userSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const Topbar = () => {
-    const { user, dispatch } = useContext(Context);
+    const user = useSelector((state) => state.user.user);
+    const dispatch = useDispatch();
+    const location = useLocation();
 
     const handleLogout = (e) => {
-        dispatch({ type: "LOGOUT" });
+        dispatch(logout());
     };
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [location]);
 
     return (
         <div className="top">
@@ -22,25 +29,46 @@ const Topbar = () => {
             </div>
             <div className="topCenter">
                 <div className="topList">
-                    <li className="topListItem">
-                        <Link className="link" to="/">
-                            HOME
-                        </Link>
+                    <Link className="link" to="/">
+                        <li className="topListItem">HOME</li>
+                    </Link>
+                    <li
+                        className={`topListItem ${
+                            location.pathname === "/about" && "active"
+                        }`}
+                    >
+                        ABOUT
                     </li>
-                    <li className="topListItem">ABOUT</li>
-                    <li className="topListItem">CONTACT</li>
-                    <li className="topListItem">
-                        <Link className="link" to="/write">
+                    <li
+                        className={`topListItem ${
+                            location.pathname === "/contact" && "active"
+                        }`}
+                    >
+                        CONTACT
+                    </li>
+                    <Link className="link" to="/write">
+                        <li
+                            className={`topListItem ${
+                                location.pathname === "/write" && "active"
+                            }`}
+                        >
                             WRITE
-                        </Link>
-                    </li>
+                        </li>
+                    </Link>
                     {user && (
                         <>
                             <Link
                                 className="link"
                                 to={`/?user=${user.username}`}
                             >
-                                <li className="topListItem">MY POSTS</li>
+                                <li
+                                    className={`topListItem ${
+                                        location.search ===
+                                            `?user=${user.username}` && "active"
+                                    }`}
+                                >
+                                    MY POSTS
+                                </li>
                             </Link>
                             <li className="topListItem" onClick={handleLogout}>
                                 LOGOUT
@@ -60,16 +88,25 @@ const Topbar = () => {
                     </Link>
                 ) : (
                     <ul className="topList">
-                        <li className="topListItem">
-                            <Link className="link" to="/login">
+                        <Link className="link" to="/login">
+                            <li
+                                className={`topListItem ${
+                                    location.pathname === "/login" && "active"
+                                }`}
+                            >
                                 LOGIN
-                            </Link>
-                        </li>
-                        <li className="topListItem">
-                            <Link className="link" to="/register">
+                            </li>
+                        </Link>
+                        <Link className="link" to="/register">
+                            <li
+                                className={`topListItem ${
+                                    location.pathname === "/register" &&
+                                    "active"
+                                }`}
+                            >
                                 REGISTER
-                            </Link>
-                        </li>
+                            </li>
+                        </Link>
                     </ul>
                 )}
                 <i className="topSearchIcon fa-solid fa-magnifying-glass"></i>

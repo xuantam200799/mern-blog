@@ -13,7 +13,7 @@ const {
 } = require("../middlewares/verifyToken");
 
 // create new post
-router.post("/", createPost);
+router.post("/", verifyTokenAndCheckUsername, createPost);
 
 // update post
 router.put("/:id", verifyTokenAndCheckUsername, updatePost);

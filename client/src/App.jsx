@@ -1,5 +1,6 @@
-import React, { useContext } from "react";
+import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import TopBar from "./components/topbar/TopBar";
 import Homepage from "./pages/homepage/Homepage";
@@ -8,10 +9,10 @@ import Write from "./pages/write/Write";
 import Settings from "./pages/settings/Settings";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
-import { Context } from "./context/Context";
+import "./app.css";
 
 function App() {
-    const { user } = useContext(Context);
+    const user = useSelector((state) => state.user.user);
 
     return (
         <Router>

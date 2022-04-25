@@ -1,14 +1,20 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+    updateStart,
+    updateSuccess,
+    updateFailure,
+    logout,
+} from "../../redux/userSlice";
 import "./settings.css";
-import { axiosInstance } from "../../config";
+import { axiosInstance } from "../../services/api";
 import { Link } from "react-router-dom";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 
 import FormikControl from "../../components/formik/FormikControl";
 import Sidebar from "../../components/sidebar/Sidebar";
-import { Context } from "../../context/Context";
-import { prefixImgURI } from "../../config";
+import { prefixImgURI } from "../../services/api";
 
 const Settings = () => {
     const initialValues = {
@@ -24,10 +30,11 @@ const Settings = () => {
     const [file, setFile] = useState(null);
     const [success, setSuccess] = useState(false);
 
-    const { user, dispatch } = useContext(Context);
+    const user = useSelector((state) => state.user.user);
+    const dispatch = useDispatch();
 
     const handleSubmit = async (values) => {
-        dispatch({ type: "UPDATE_START" });
+        dispatch(updateStart());
         const updatedUser = {
             userId: user._id,
             username: values.username,
@@ -50,14 +57,21 @@ const Settings = () => {
                 updatedUser
             );
             setSuccess(true);
-            dispatch({ type: "UPDATE_SUCCESS", payload: res.data });
+            dispatch(updateSuccess(res.data));
         } catch (err) {
-            dispatch({ type: "UPDATE_FAILURE" });
+            dispatch(updateFailure());
         }
     };
 
     const handleDelete = async (e) => {
-        window.confirm("chua lam chuc nang xoa");
+        if (window.confirm("ban co muon xoa tai khoan k?") === true) {
+            try {
+                await axiosInstance.delete(`/users/${user._id}`, {
+                    data: { userId: user._id },
+                });
+                dispatch(logout());
+            } catch (err) {}
+        }
     };
 
     return (

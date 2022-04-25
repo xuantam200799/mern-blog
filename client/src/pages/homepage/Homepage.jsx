@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./homepage.css";
-import { axiosInstance } from "../../config";
+import { axiosInstance } from "../../services/api";
 import { useLocation } from "react-router-dom";
 
 import Header from "../../components/header/Header";

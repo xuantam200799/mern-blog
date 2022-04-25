@@ -17,6 +17,9 @@ const updateUser = async (req, res, next) => {
                 },
                 { new: true }
             );
+            updateUser.profilePic
+                ? (updateUser.profilePic = updateUser.profilePic)
+                : (updateUser.profilePic = "blank-avatar.jpg");
             res.status(200).json(updateUser);
         } catch (err) {
             res.status(500).json(err);
@@ -30,7 +33,6 @@ const deleteUser = async (req, res, next) => {
     if (req.body.userId === req.params.id) {
         try {
             const user = await User.findById(req.params.id);
-
             try {
                 await Post.deleteMany({ username: user.username });
                 await User.findByIdAndDelete(req.params.id);

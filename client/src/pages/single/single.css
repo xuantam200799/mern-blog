@@ -1,3 +1,4 @@
 .single {
+    margin-top: var(--header-height);
     display: flex;
 }

@@ -5,7 +5,7 @@ import { Formik, Form } from "formik";
 import * as Yup from "yup";
 
 import FormikControl from "../../components/formik/FormikControl";
-import { axiosInstance } from "../../config";
+import AuthService from "../../services/auth.service";
 
 const Register = () => {
     const initialValues = {
@@ -18,23 +18,21 @@ const Register = () => {
         username: Yup.string().required("Required"),
         email: Yup.string().email("Invalid email format").required("Required"),
         password: Yup.string().required("Required"),
-        passwordConfirmation: Yup.string().oneOf(
-            [Yup.ref("password"), null],
-            "Passwords must match"
-        ),
+        passwordConfirmation: Yup.string()
+            .required("Required")
+            .oneOf([Yup.ref("password"), null], "Passwords must match"),
     });
     const [error, setError] = useState({});
 
     const handleSubmit = async (values) => {
         setError({});
         try {
-            const res = await axiosInstance.post("/auth/register", {
-                username: values.username,
-                email: values.email,
-                password: values.password,
-            });
+            const res = await AuthService.register(
+                values.username,
+                values.email,
+                values.password
+            );
             res.data && window.location.replace("/login");
-            console.log(res);
         } catch (error) {
             setError(error.response);
         }
@@ -85,7 +83,7 @@ const Register = () => {
                             />
                             <button
                                 type="submit"
-                                disabled={!formik.isValid}
+                                // disabled={!formik.isValid}
                                 className="registerButton"
                             >
                                 Register

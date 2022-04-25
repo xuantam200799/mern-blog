@@ -1,13 +1,12 @@
 .header {
-    margin-top: 60px;
-
+    margin-top: 50px;
 }
 
 .headerTitles {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-family: 'Lora', serif;
+    font-family: "Lora", serif;
     color: #444;
 }
 

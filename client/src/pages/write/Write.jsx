@@ -1,8 +1,7 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import "./write.css";
-import { axiosInstance } from "../../config";
-
-import { Context } from "../../context/Context";
+import { axiosInstance } from "../../services/api";
 
 const Write = () => {
     const [title, setTitle] = useState("");
@@ -10,7 +9,7 @@ const Write = () => {
     const [file, setFile] = useState(null);
     const [categories, setCategories] = useState([]);
     const [checked, setChecked] = useState([]);
-    const { user } = useContext(Context);
+    const { user } = useSelector((state) => state.user);
 
     const handleOnCheck = (e) => {
         let updatedList = [...checked];
