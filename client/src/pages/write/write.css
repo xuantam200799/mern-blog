@@ -1,5 +1,6 @@
 .write {
-    padding-top: 50px;
+    padding-top: var(--header-height);
+    font-size: 1.6rem;
 }
 
 .writeImg {
@@ -19,6 +20,7 @@
     display: flex;
     align-items: center;
     flex-wrap: wrap;
+    background-color: var(--main-color);
 }
 
 .writeInput {
@@ -126,4 +128,13 @@ input[type="checkbox"]:checked + .checkbox-label::after {
 .checkbox-label::before,
 .checkbox-label::after {
     transition: 0.25s all ease;
+}
+
+@media only screen and (max-width: 1080px) {
+    .writeFormGroup {
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+}
+@media only screen and (max-width: 680px) {
 }

@@ -19,21 +19,22 @@ const Post = ({ post }) => {
                     />
                 </Link>
             )}
-            <div className="postInfo">
-                <div className="postCats">
-                    {post.categories.map((cat, i) => (
-                        <Link className="link" to={`/?cat=${cat}`} key={i}>
-                            <Badge>{cat}</Badge>
-                        </Link>
-                    ))}
+            <div className="postContent">
+                <div className="postInfo">
+                    <Link to={`/post/${post._id}`} className="link">
+                        <span className="postTitle">{post.title}</span>
+                    </Link>
+                    <span className="postDate">{format(post.createdAt)}</span>
+                    <div className="postCats">
+                        {post.categories.map((cat, i) => (
+                            <Link className="link" to={`/?cat=${cat}`} key={i}>
+                                <Badge>{cat}</Badge>
+                            </Link>
+                        ))}
+                    </div>
                 </div>
-                <Link to={`/post/${post._id}`} className="link">
-                    <span className="postTitle">{post.title}</span>
-                </Link>
-                <hr />
-                <span className="postDate">{format(post.createdAt)}</span>
+                <p className="postDesc">{post.desc}</p>
             </div>
-            <p className="postDesc">{post.desc}</p>
         </div>
     );
 };

@@ -3,6 +3,8 @@ import "./sidebar.css";
 import { axiosInstance } from "../../services/api";
 import { Link } from "react-router-dom";
 
+import { IconButton } from "../button/Button";
+
 const Sidebar = () => {
     const [cats, setCats] = useState([]);
 
@@ -45,10 +47,22 @@ const Sidebar = () => {
             <div className="sidebarItem">
                 <span className="sidebarTitle">FOLLOW US</span>
                 <div className="sidebarSocial">
-                    <i className="sidebarIcon fab fa-facebook-square"></i>
-                    <i className="sidebarIcon fab fa-instagram-square"></i>
-                    <i className="sidebarIcon fab fa-pinterest-square"></i>
-                    <i className="sidebarIcon fab fa-twitter-square"></i>
+                    <IconButton
+                        className="facebook"
+                        iconName="fa-brands fa-facebook-square"
+                    />
+                    <IconButton
+                        className="twitter"
+                        iconName="fa-brands fa-twitter-square"
+                    />
+                    <IconButton
+                        className="pinterest"
+                        iconName="fa-brands fa-pinterest-square"
+                    />
+                    <IconButton
+                        className="instagram"
+                        iconName="fa-brands fa-instagram-square"
+                    />
                 </div>
             </div>
         </div>

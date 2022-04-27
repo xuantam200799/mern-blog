@@ -1,0 +1,50 @@
+.btn {
+    outline: none;
+    border: none;
+    background-color: transparent;
+}
+
+.btn-icon {
+    padding: 0;
+    margin-right: 10px;
+}
+
+.btn-icon:last-child {
+    margin-right: 0;
+}
+
+.btn-icon i {
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.btn-icon.facebook i {
+    color: var(--facebook-color);
+}
+
+.btn-icon.facebook i:hover {
+    opacity: 0.8;
+}
+.btn-icon.twitter i {
+    color: var(--twitter-color);
+}
+
+.btn-icon.twitter i:hover {
+    opacity: 0.8;
+}
+.btn-icon.pinterest i {
+    color: var(--pinterest-color);
+}
+
+.btn-icon.pinterest i:hover {
+    opacity: 0.8;
+}
+.btn-icon.instagram i {
+    background: var(--instagram-color);
+    color: transparent;
+    background-clip: text;
+}
+
+.btn-icon.instagram i:hover {
+    opacity: 0.8;
+}

@@ -1,6 +1,7 @@
 .settings {
     display: flex;
     margin-top: var(--header-height);
+    font-size: 1.6rem;
 }
 
 .settingsWrapper {

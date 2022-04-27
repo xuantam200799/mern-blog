@@ -1,26 +1,60 @@
-* {
-    margin: 0;
-}
-
 :root {
-    --header-bg-color: rgba(223, 230, 233, 1);
+    --main-color: white;
+    --main-bg: #fafafa;
     --header-height: 50px;
-    --txt-black: black;
-    --txt-primary-color: rgba(99, 110, 114, 1);
-    --txt-secondary-color: rgba(149, 165, 166, 1);
-    --txt-third-color: rgba(241, 196, 15, 1);
     --btn-primary-bg: rgba(192, 57, 43, 1);
     --btn-primary-bg-hover: rgba(231, 76, 60, 1);
-    --btn-secondary-bg: rgba(41, 128, 185, 1);
-    --btn-secondary-bg-hover: rgba(52, 152, 219, 1);
-    --sidebar-bg: #fdfbfb;
-    --link-hover: rgba(192, 57, 43, 1);
+    --box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    --box-shadow-bottom: 0px 3px 8px -5px rgba(0, 0, 0, 0.5);
+    --facebook-color: #516eab;
+    --twitter-color: #1da1f2;
+    --pinterest-color: #bd081c;
+    --instagram-color: radial-gradient(
+        circle at 30% 107%,
+        #fdf497 0%,
+        #fdf497 5%,
+        #fd5949 45%,
+        #d6249f 60%,
+        #285aeb 90%
+    );
     --border-radius: 5px;
-    --badge-txt-color: rgba(253, 203, 110, 1);
-    --badge-bg-color: rgba(255, 234, 167, 0.5);
-    --badge-bg-color-hover: rgba(255, 234, 167, 1);
+    --txt-primary-color: rgba(192, 57, 43, 1);
+    /* --txt-black: black; */
+    /* --txt-primary-color: rgba(99, 110, 114, 1); */
+    /* --txt-secondary-color: rgba(149, 165, 166, 1); */
+    /* --txt-third-color: rgba(241, 196, 15, 1); */
+    /* --btn-secondary-bg: rgba(41, 128, 185, 1); */
+    /* --btn-secondary-bg-hover: rgba(52, 152, 219, 1); */
+    /* --sidebar-bg: #fdfbfb; */
+    /* --link-hover: rgba(192, 57, 43, 1); */
+    --badge-txt-color: rgb(255, 182, 48);
+    --badge-txt-color-hover: rgb(255, 249, 239);
+    --badge-bg-color: rgba(253, 220, 111, 0.5);
+    --badge-bg-color-hover: rgb(254, 220, 105);
     --badge-second-bg-color: rgba(223, 230, 233, 1);
     --badge-second-bg-color-hover: rgba(178, 190, 195, 1);
+}
+* {
+    margin: 0;
+    box-sizing: inherit;
+}
+
+html {
+    scroll-behavior: smooth;
+    background-color: var(--main-bg);
+    font-size: 62.5%;
+    /* line-height: 1.6rem; */
+    box-sizing: border-box;
+}
+
+.container {
+    width: 1280px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.container_fluid {
+    width: 100%;
 }
 
 ul {

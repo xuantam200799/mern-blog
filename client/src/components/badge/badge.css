@@ -3,7 +3,7 @@
     background-color: var(--badge-bg-color);
     padding: 2px 5px;
     border-radius: var(--border-radius);
-    font-size: 0.7rem;
+    font-size: 1rem;
     color: var(--badge-txt-color);
     line-height: 20px;
     margin-top: 15px;
@@ -12,7 +12,7 @@
 }
 
 .badge.badge-lg {
-    font-size: 1rem;
+    font-size: 1.4rem;
     padding: 2px 8px;
 }
 
@@ -27,4 +27,5 @@
 
 .badge:hover {
     background-color: var(--badge-bg-color-hover);
+    color: var(--badge-txt-color-hover);
 }

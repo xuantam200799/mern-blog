@@ -1,13 +1,14 @@
 .sidebar {
-    flex: 3;
+    flex: 4;
     height: fit-content;
-    margin: 20px;
+    margin: 0 20px;
     padding-bottom: 30px;
-    background-color: var(--sidebar-bg);
+    background-color: var(--main-color);
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-size: 1.6rem;
 }
 
 .sidebarItem {
@@ -46,7 +47,7 @@
 }
 
 .sidebarList > .link:hover {
-    color: var(--link-hover);
+    color: var(--txt-primary-color);
 }
 
 .sidebarListItem {
@@ -64,8 +65,8 @@
     justify-content: center;
 }
 
-.sidebarIcon {
-    font-size: 16px;
-    margin-left: 10px;
-    cursor: pointer;
+@media only screen and (max-width: 1080px) {
+    .sidebar {
+        display: none;
+    }
 }

@@ -1,6 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./topbar.css";
+
+import { IconButton } from "../button/Button";
 
 import { prefixImgURI } from "../../services/api";
 import { logout } from "../../redux/userSlice";
@@ -10,10 +12,23 @@ const Topbar = () => {
     const user = useSelector((state) => state.user.user);
     const dispatch = useDispatch();
     const location = useLocation();
+    const [visible, setVisible] = useState(false);
+    const [toggle, setToggle] = useState(false);
 
     const handleLogout = (e) => {
         dispatch(logout());
     };
+
+    const toggleVisible = () => {
+        const scrolled = document.documentElement.scrollTop;
+        if (scrolled > 300) {
+            setVisible(true);
+        } else if (scrolled <= 300) {
+            setVisible(false);
+        }
+    };
+
+    window.addEventListener("scroll", toggleVisible);
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -22,13 +37,28 @@ const Topbar = () => {
     return (
         <div className="top">
             <div className="topLeft">
-                <i className="topIcon fa-brands fa-facebook-square"></i>
-                <i className="topIcon fa-brands fa-twitter-square"></i>
-                <i className="topIcon fa-brands fa-pinterest-square"></i>
-                <i className="topIcon fa-brands fa-instagram-square"></i>
+                <IconButton
+                    className="facebook"
+                    iconName="fa-brands fa-facebook-square"
+                />
+                <IconButton
+                    className="twitter"
+                    iconName="fa-brands fa-twitter-square"
+                />
+                <IconButton
+                    className="pinterest"
+                    iconName="fa-brands fa-pinterest-square"
+                />
+                <IconButton
+                    className="instagram"
+                    iconName="fa-brands fa-instagram-square"
+                />
             </div>
             <div className="topCenter">
-                <div className="topList">
+                <button className="toggle" onClick={() => setToggle(!toggle)}>
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <div className={`topList responsive ${toggle ? "active" : ""}`}>
                     <Link className="link" to="/">
                         <li className="topListItem">HOME</li>
                     </Link>
@@ -80,11 +110,20 @@ const Topbar = () => {
             <div className="topRight">
                 {user ? (
                     <Link className="link" to="/settings">
-                        <img
-                            className="topImg"
-                            src={prefixImgURI + user.profilePic}
-                            alt=""
-                        />
+                        <div
+                            className={`account ${
+                                location.pathname === "/settings"
+                                    ? "active"
+                                    : ""
+                            }`}
+                        >
+                            <img
+                                className="accountTopImg"
+                                src={prefixImgURI + user.profilePic}
+                                alt=""
+                            />
+                            <span className="accountInfo">{user.username}</span>
+                        </div>
                     </Link>
                 ) : (
                     <ul className="topList">
@@ -109,8 +148,17 @@ const Topbar = () => {
                         </Link>
                     </ul>
                 )}
-                <i className="topSearchIcon fa-solid fa-magnifying-glass"></i>
+                <div className="search">
+                    <i className="topSearchIcon fa-solid fa-magnifying-glass"></i>
+                </div>
             </div>
+            <button
+                className="scrollToTopbtn"
+                onClick={() => window.scrollTo(0, 0)}
+                style={{ display: visible ? "block" : "none" }}
+            >
+                <i class="fa-solid fa-arrow-up"></i>
+            </button>
         </div>
     );
 };

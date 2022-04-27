@@ -22,9 +22,11 @@ const Homepage = () => {
     return (
         <>
             <Header />
-            <div className="home">
-                <Posts posts={posts} />
-                <Sidebar />
+            <div className="container">
+                <div className="home">
+                    <Posts posts={posts} />
+                    <Sidebar />
+                </div>
             </div>
         </>
     );

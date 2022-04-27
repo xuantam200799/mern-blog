@@ -1,6 +1,11 @@
 .posts {
-    flex: 9;
+    flex: 8;
     display: flex;
-    flex-wrap: wrap;
-    margin: 20px;
+    flex-direction: column;
+}
+
+@media only screen and (max-width: 1080px) {
+    .posts {
+        padding: 0 20px;
+    }
 }
